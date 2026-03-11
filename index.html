@@ -1,27 +1,37 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mi Página Web</title>
+<title>Mi Página Manga</title>
 
 <style>
+
+html{
+scroll-behavior:smooth;
+}
 
 body{
     font-family: Arial, sans-serif;
     margin:0;
-    background:#f5f5f5;
+    background:#fff0f6;
+    padding-top:70px;
 }
 
 /* NAVBAR */
 
 nav{
-    background:#1e293b;
+    background:#ff4da6;
     color:white;
     padding:15px 40px;
     display:flex;
     justify-content:space-between;
     align-items:center;
+    position:fixed;
+    width:100%;
+    top:0;
+    z-index:1000;
 }
 
 nav ul{
@@ -41,7 +51,7 @@ nav a{
 .hero{
     text-align:center;
     padding:80px 20px;
-    background:linear-gradient(135deg,#2563eb,#1e3a8a);
+    background:linear-gradient(135deg,#ff80bf,#ff4da6);
     color:white;
 }
 
@@ -49,19 +59,48 @@ nav a{
     font-size:48px;
 }
 
-.hero p{
-    font-size:18px;
-}
+/* BOTONES */
 
 .btn{
     margin-top:20px;
     padding:12px 25px;
     background:white;
-    color:#1e3a8a;
+    color:#ff4da6;
     border:none;
     border-radius:6px;
     cursor:pointer;
     font-weight:bold;
+    transition:0.3s;
+}
+
+.btn:hover{
+    background:#ff4da6;
+    color:white;
+}
+
+/* MENU EXPANDIBLE */
+
+.dropdown{
+margin-top:20px;
+display:none;
+flex-direction:column;
+gap:10px;
+align-items:center;
+}
+
+.dropdown a{
+background:white;
+color:#ff4da6;
+padding:10px 20px;
+border-radius:6px;
+text-decoration:none;
+font-weight:bold;
+transition:0.3s;
+}
+
+.dropdown a:hover{
+background:#ff4da6;
+color:white;
 }
 
 /* CARDS */
@@ -78,16 +117,17 @@ nav a{
     padding:25px;
     border-radius:10px;
     box-shadow:0 4px 10px rgba(0,0,0,0.1);
+    transition:0.3s;
 }
 
-.card h3{
-    margin-top:0;
+.card:hover{
+    transform:translateY(-8px);
 }
 
 footer{
     text-align:center;
     padding:20px;
-    background:#1e293b;
+    background:#ff4da6;
     color:white;
 }
 
@@ -97,45 +137,74 @@ footer{
 <body>
 
 <nav>
-<h2>MiSitio</h2>
+<h2>MangaWorld</h2>
 
 <ul>
-<li><a href="#">Inicio</a></li>
-<li><a href="#">Servicios</a></li>
-<li><a href="#">Contacto</a></li>
+<li><a href="#inicio">Inicio</a></li>
+<li><a href="#servicios">Colección</a></li>
+<li><a href="#contacto">Contacto</a></li>
 </ul>
 </nav>
 
-<section class="hero">
-<h1>Bienvenido a mi página</h1>
-<p>Una interfaz moderna creada con HTML y CSS</p>
-<button class="btn">Empezar</button>
+<section id="inicio" class="hero">
+
+<h1>Bienvenido a MangaWorld</h1>
+<p>Explora mangas, animes y comics</p>
+
+<button class="btn" onclick="toggleMenu()">Nuestros mangas</button>
+
+<div class="dropdown" id="menu">
+<a href="#servicios">Mangas</a>
+<a href="#servicios">Animes</a>
+<a href="#servicios">Comics</a>
+</div>
+
 </section>
 
-<section class="container">
+<section id="servicios" class="container">
 
 <div class="card">
-<h3>Servicio 1</h3>
-<p>Descripción breve del servicio o producto.</p>
+<h3>Mangas</h3>
+<p>Descubre historias japonesas increíbles.</p>
 </div>
 
 <div class="card">
-<h3>Servicio 2</h3>
-<p>Descripción breve del servicio o producto.</p>
+<h3>Animes</h3>
+<p>Series animadas llenas de aventura.</p>
 </div>
 
 <div class="card">
-<h3>Servicio 3</h3>
-<p>Descripción breve del servicio o producto.</p>
+<h3>Comics</h3>
+<p>Historias gráficas de todo el mundo.</p>
 </div>
 
+</section>
+
+<section id="contacto" style="padding:60px;text-align:center;">
+<h2>Contacto</h2>
+<p>Escríbenos para recomendaciones.</p>
+<button class="btn">Enviar mensaje</button>
 </section>
 
 <footer>
-<p>© 2026 Mi Página Web</p>
+<p>© 2026 MangaWorld</p>
 </footer>
+
+<script>
+
+function toggleMenu(){
+
+let menu = document.getElementById("menu");
+
+if(menu.style.display === "flex"){
+menu.style.display = "none";
+}else{
+menu.style.display = "flex";
+}
+
+}
+
+</script>
 
 </body>
 </html>
-
-This is my very first website so far <b>I'm so overwhelmed</b>
